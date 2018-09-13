@@ -17,7 +17,7 @@
             <br>
             <p></p>
             {% if value %}
-                <p>New Student {{ value[0] }} {{ value[1] }} added to period {{ value[2] }}</p>
+                <p>New Student - {{ value[0] }} {{ value[1] }} added to period {{ value[2] }}</p>
             {% else %}
             {% endif %}
         </form>
@@ -25,7 +25,7 @@
     <div class="jumbotron">
         <p>Students:</p>
         {% for i in students %}
-            <p>{{ i.first_name }} {{ i.last_name }} Period: {{ i.period }}</p>
+            <p>{{ i.first_name }} {{ i.last_name }} -  Period: {{ i.period }}</p>
         {% endfor %}
     </div>
 {% endblock %}
