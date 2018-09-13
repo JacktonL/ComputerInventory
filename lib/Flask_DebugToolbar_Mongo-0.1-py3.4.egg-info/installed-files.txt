@@ -1,0 +1,15 @@
+..\flask_debugtoolbar_mongo\__init__.py
+..\flask_debugtoolbar_mongo\__pycache__\__init__.cpython-34.pyc
+..\flask_debugtoolbar_mongo\__pycache__\jinja_filters.cpython-34.pyc
+..\flask_debugtoolbar_mongo\__pycache__\operation_tracker.cpython-34.pyc
+..\flask_debugtoolbar_mongo\__pycache__\panel.cpython-34.pyc
+..\flask_debugtoolbar_mongo\jinja_filters.py
+..\flask_debugtoolbar_mongo\operation_tracker.py
+..\flask_debugtoolbar_mongo\panel.py
+..\flask_debugtoolbar_mongo\templates\mongo-panel.html
+..\flask_debugtoolbar_mongo\templates\mongo-panes-subtitle.html
+PKG-INFO
+SOURCES.txt
+dependency_links.txt
+not-zip-safe
+top_level.txt
