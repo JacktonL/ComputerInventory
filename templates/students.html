@@ -22,5 +22,11 @@
             {% endif %}
         </form>
     </div>
+    <div class="jumbotron">
+        <p>Students:</p>
+        {% for i in students %}
+            <p>{{ i.first_name }} {{ i.last_name }} Period: {{ i.period }}</p>
+        {% endfor %}
+    </div>
 {% endblock %}
 

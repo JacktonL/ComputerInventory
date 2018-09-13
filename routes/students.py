@@ -21,4 +21,4 @@ def students():
         newStudent.last_name = last_name
         newStudent.period = period
         newStudent.save()
-    return render_template("students.html", form=form, value=value)
+    return render_template("students.html", form=form, value=value, students=Student.objects)
