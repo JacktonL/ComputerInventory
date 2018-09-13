@@ -1,6 +1,26 @@
 {% extends "base.html" %}
 
 {% block body %}
-    {{ form.first_name.label }}
+    <div class="jumbotron">
+        <form method=post>
+            {{ form.hidden_tag() }}
+            {{ form.first_name.label }}
+            {{ form.first_name()}}
+            <br>
+            {{ form.last_name.label }}
+            {{ form.last_name() }}
+            <br>
+            {{ form.period.label }}
+            {{ form.period() }}
+            <br>
+            {{ form.submit() }}
+            <br>
+            <p></p>
+            {% if value %}
+                <p>New Student {{ value[0] }} {{ value[1] }} added to period {{ value[2] }}</p>
+            {% else %}
+            {% endif %}
+        </form>
+    </div>
 {% endblock %}
 
