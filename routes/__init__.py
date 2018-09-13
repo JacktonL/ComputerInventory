@@ -1,5 +1,5 @@
 
-from ComputerInv import app, db
+from ComputerInv import app
 from .students import students
 from .index import index
 from .period import period
