@@ -25,7 +25,8 @@
     <div class="jumbotron">
         <p>Students:</p>
         {% for i in students %}
-            <p>{{ i.first_name }} {{ i.last_name }} -  Period: {{ i.period }}</p>
+            {% set link_name = i.first_name + i.last_name %}
+            <p><a href={{ "%s" % link_name}}> {{ i.first_name }} {{ i.last_name }}</a> -  Period: {{ i.period }}</p>
         {% endfor %}
     </div>
 {% endblock %}

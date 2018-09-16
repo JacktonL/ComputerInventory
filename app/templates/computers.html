@@ -1,11 +1,25 @@
 {% extends "base.html" %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+{% block body %}
+    <div class="jumbotron">
+        <form method=post>
+            {{ form.hidden_tag() }}
+            {{ form.number.label }}
+            {{ form.number()}}
+            <br>
+            {{ form.status.label }}
+            {{ form.status() }}
+            <br>
+            {{ form.os.label }}
+            {{ form.os() }}
+            <br>
+            {{ form.submit() }}
+            <br>
+            <p></p>
+            {% if value %}
+                <p>New Computer {{ value[0] }} Added</p>
+            {% else %}
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}
