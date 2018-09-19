@@ -2,6 +2,7 @@ from app.routes import app
 from flask import render_template, request
 from .Forms import ComputerForm
 from .Classes import Computer
+from .Classes import Student
 
 
 @app.route("/computers", methods=['GET', 'POST'])
@@ -38,13 +39,23 @@ def computers():
 
 @app.route("/computer/<computer>", methods=["GET", "POST"])
 def computerpage(computer):
-
+    form = ComputerForm(request.form)
+    studentlist = []
     for i in Computer.objects:
         temp = i.number
         print(temp)
         if temp == computer:
             computerObj = i
-            return render_template("computerpage.html", value=computerObj)
+            for j in Student.objects:
+                if j.computer.number == i.number:
+                    studentlist.append(j)
+            if request.method == "POST" and form.validate():
+                computerObj.os = form.os.data
+                computerObj.status = form.status.data
+
+                computerObj.save()
+
+            return render_template("computerpage.html", value=computerObj, form=form, students=studentlist)
 
     return render_template("error.html")
 
