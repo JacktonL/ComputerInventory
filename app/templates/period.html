@@ -6,7 +6,8 @@
             <h3>Period {{ i }}</h3>
             {% for j in value %}
                 {% if j.period == i|string %}
-                    <p>{{ j.first_name }} {{ j.last_name }}</p>
+                    {% set link_name = j.first_name + j.last_name %}
+                    <p><a href={{ "/student/%s" % link_name }}>{{ j.first_name }} {{ j.last_name }}</a> - <a href={{ "/computer/%s" % j.computer.number }}> Computer</a>: {{ j.computer.number }}</p>
                 {% endif %}
             {% endfor %}
         {% endfor %}

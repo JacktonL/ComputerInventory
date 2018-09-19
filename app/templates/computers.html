@@ -18,8 +18,16 @@
             <p></p>
             {% if value %}
                 <p>New Computer {{ value[0] }} Added</p>
+            {% elif check%}
+                <p>Computer Updated</p>
             {% else %}
             {% endif %}
         </form>
+    </div>
+    <div class="jumbotron">
+        <p>Computers:</p>
+        {% for i in computers %}
+            <p><a href={{ "/computer/%s" %  i.number }}> Computer: {{ i.number }}</a>, {{ i.status }}, {{ i.os}}</p>
+        {% endfor %}
     </div>
 {% endblock %}
