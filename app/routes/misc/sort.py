@@ -1,5 +1,6 @@
 
 from app.routes.Classes import Computer
+from app.routes.Classes import Student
 
 
 def sortstatus():
@@ -42,6 +43,15 @@ def sortnumber():
     return sortlist
 
 
+def sortperiod():
 
+    sortlist = []
 
+    for i in range(1, 6):
 
+        for j in Student.objects:
+
+            if j.period == str(i):
+                sortlist.append(j)
+
+    return sortlist

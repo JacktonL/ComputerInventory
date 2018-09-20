@@ -24,6 +24,10 @@
     </div>
     <div class="jumbotron">
         <p>Students:</p>
+        <form method=post>
+            {{ sort.hidden_tag() }}
+            {{ sort.sortStudent.label }} {{ sort.sortStudent() }} {{ sort.submit() }}
+        </form>
         {% for i in students %}
             {% set link_name = i.first_name + i.last_name %}
             <p><a href={{ "/student/%s" % link_name}}> {{ i.first_name }} {{ i.last_name }}</a> -  Period: {{ i.period }}</p>

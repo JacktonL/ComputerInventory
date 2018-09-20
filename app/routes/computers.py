@@ -57,7 +57,6 @@ def computerpage(computer):
     studentlist = []
     for i in Computer.objects:
         temp = i.number
-        print(temp)
         if temp == computer:
             computerObj = i
             for j in Student.objects:

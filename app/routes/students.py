@@ -1,18 +1,20 @@
 from app.routes import app
 from flask import render_template, request
-from .Forms import StudentForm
+from .Forms import StudentForm, Sort
 from .Classes import Student
 from .Classes import Computer
+from .misc import sortperiod
+
 
 
 @app.route("/students", methods=['GET', 'POST'])
 def students():
     value = False
     form = StudentForm(request.form)
-    print(request.method)
-    print(form.validate())
-    if request.method == 'POST' and not form.validate():
-        print(1)
+    sortForm = Sort(request.form)
+    studentlist = Student.objects
+
+    if request.method == 'POST' and not form.validate() and form.period.data != "":
         first_name = form.first_name.data
         last_name = form.last_name.data
         period = form.period.data
@@ -26,7 +28,12 @@ def students():
         newStudent.period = period
         newStudent.save()
 
-    return render_template("students.html", form=form, value=value, students=Student.objects)
+    if request.method == 'POST' and not sortForm.validate():
+        print(1)
+        if sortForm.sortStudent.data == 'per':
+            studentlist = sortperiod()
+
+    return render_template("students.html", form=form, value=value, students=studentlist, sort=sortForm)
 
 
 @app.route("/student/<student>", methods=['GET', 'POST'])
