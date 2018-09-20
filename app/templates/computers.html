@@ -30,8 +30,9 @@
             {{ sort.hidden_tag() }}
             {{ sort.sortComputer.label }} {{ sort.sortComputer() }} {{ sort.submit() }}
         </form>
+        <br>
         {% for i in computers %}
-            <p><a href={{ "/computer/%s" %  i.number }}> Computer: {{ i.number }}</a>, {{ i.status }}, {{ i.os}}</p>
+            <p><a href={{ "/computer/%s" %  i.number }}> Computer: {{ i.number }}</a> - {{ i.status }} - {{ i.os}}</p>
         {% endfor %}
     </div>
 {% endblock %}

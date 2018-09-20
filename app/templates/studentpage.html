@@ -7,7 +7,7 @@
         {% if student.computer == None %}
             <p>Computer: Not Assigned</p>
         {% else %}
-            <p>Assigned to Computer: {{ student.computer.number }}</p>
+            <p>Assigned to <a href={{ "/computer/%s" % student.computer.number }}>Computer: {{ student.computer.number }}</a></p>
         {% endif %}
 
     </div>

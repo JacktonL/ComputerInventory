@@ -40,9 +40,9 @@ def computers():
             newComputer.save()
 
     if request.method == "POST" and not sortForm.validate():
-        if sortForm.sortComputer.data == 'Number':
+        if sortForm.sortComputer.data == 'num':
             computerlist = sort.sortnumber()
-        elif sortForm.sortComputer.data == "Status":
+        elif sortForm.sortComputer.data == "stat":
             computerlist = sort.sortstatus()
         else:
             computerlist = sort.sortos()
