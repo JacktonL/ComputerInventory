@@ -3,12 +3,17 @@ from flask import render_template, request
 from .Forms import ComputerForm
 from .Classes import Computer
 from .Classes import Student
+from .Forms import Sort
+from .misc import sort
 
 
 @app.route("/computers", methods=['GET', 'POST'])
 def computers():
     value = False
     check = False
+    sortForm = Sort(request.form)
+    computerlist = Computer.objects
+
     form = ComputerForm(request.form)
     if request.method == 'POST' and form.validate():
         number = form.number.data
@@ -34,7 +39,16 @@ def computers():
             newComputer.os = os
             newComputer.save()
 
-    return render_template("computers.html", form=form, value=value, computers=Computer.objects, check=check)
+    if request.method == "POST" and not sortForm.validate():
+        if sortForm.sortComputer.data == 'Number':
+            computerlist = sort.sortnumber()
+        elif sortForm.sortComputer.data == "Status":
+            computerlist = sort.sortstatus()
+        else:
+            computerlist = sort.sortos()
+
+    return render_template("computers.html", form=form, value=value, computers=computerlist, check=check,
+                           sort=sortForm)
 
 
 @app.route("/computer/<computer>", methods=["GET", "POST"])
