@@ -54,9 +54,11 @@ def computers():
 
 @app.route("/computer/<computer>", methods=["GET", "POST"])
 def computerpage(computer):
+
     form = ComputerForm(request.form)
     softform = SoftwareForm(request.form)
     studentlist = []
+
     for i in Computer.objects:
         temp = i.number
         if temp == computer:
@@ -74,8 +76,15 @@ def computerpage(computer):
 
                 computerObj.save()
 
+            if request.method == "POST" and softform.validate():
+                computerObj.software.anaconda = softform.anaconda.data
+                computerObj.software.python = softform.python.data
+                computerObj.software.atom = softform.atom.data
+
+                computerObj.save()
+
             return render_template("computerpage.html", value=computerObj, form=form, students=studentlist,
-                                   soft=softform)
+                                    soft=softform)
 
     return render_template("error.html")
 

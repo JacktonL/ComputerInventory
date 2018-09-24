@@ -25,5 +25,18 @@
     </div>
     <div class="jumbotron">
         <h1>Software:</h1>
+        <form method=post>
+            {{ soft.hidden_tag() }}
+            {{ soft.anaconda.label }}
+            {{ soft.anaconda() }}
+            <br>
+            {{ soft.python.label }}
+            {{ soft.python() }}
+            <br>
+            {{ soft.atom.label }}
+            {{ soft.atom() }}
+            <br>
+            {{ soft.submit() }}
+        </form>
     </div>
 {% endblock %}
