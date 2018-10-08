@@ -3,6 +3,7 @@ from flask import render_template, request
 from .Forms import ComputerForm
 from .Classes import Computer
 from .Classes import Student
+from .Classes import Software
 from .Forms import Sort
 from .misc import sort
 from .Forms import SoftwareForm
@@ -77,9 +78,17 @@ def computerpage(computer):
                 computerObj.save()
 
             if request.method == "POST" and softform.validate():
-                computerObj.software.anaconda = softform.anaconda.data
-                computerObj.software.python = softform.python.data
-                computerObj.software.atom = softform.atom.data
+
+                new_software = Software()
+
+                new_software.anaconda = softform.anaconda.data
+                print(softform.anaconda.data)
+                new_software.python = softform.python.data
+                new_software.atom = softform.atom.data
+
+                new_software.save()
+
+                computerObj.software = new_software
 
                 computerObj.save()
 
