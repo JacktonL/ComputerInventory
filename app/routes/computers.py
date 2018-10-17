@@ -3,8 +3,10 @@ from flask import render_template, request
 from .Forms import ComputerForm
 from .Classes import Computer
 from .Classes import Student
+from .Classes import Software
 from .Forms import Sort
 from .misc import sort
+from .Forms import SoftwareForm
 
 
 @app.route("/computers", methods=['GET', 'POST'])
@@ -53,22 +55,45 @@ def computers():
 
 @app.route("/computer/<computer>", methods=["GET", "POST"])
 def computerpage(computer):
+
     form = ComputerForm(request.form)
+    softform = SoftwareForm(request.form)
     studentlist = []
+
     for i in Computer.objects:
         temp = i.number
         if temp == computer:
             computerObj = i
             for j in Student.objects:
-                if j.computer.number == i.number:
-                    studentlist.append(j)
+                temp = computerObj.number
+                try:
+                    if j.computer.number == temp:
+                        studentlist.append(j)
+                except AttributeError:
+                    pass
             if request.method == "POST" and form.validate():
                 computerObj.os = form.os.data
                 computerObj.status = form.status.data
 
                 computerObj.save()
 
-            return render_template("computerpage.html", value=computerObj, form=form, students=studentlist)
+            if request.method == "POST" and softform.validate():
+
+                new_software = Software()
+
+                new_software.anaconda = softform.anaconda.data
+                print(softform.anaconda.data)
+                new_software.python = softform.python.data
+                new_software.atom = softform.atom.data
+
+                new_software.save()
+
+                computerObj.software = new_software
+
+                computerObj.save()
+
+            return render_template("computerpage.html", value=computerObj, form=form, students=studentlist,
+                                    soft=softform)
 
     return render_template("error.html")
 

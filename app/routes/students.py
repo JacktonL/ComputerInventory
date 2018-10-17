@@ -15,9 +15,18 @@ def students():
     studentlist = Student.objects
 
     if request.method == 'POST' and not form.validate() and form.period.data != "":
-        first_name = form.first_name.data
-        last_name = form.last_name.data
-        period = form.period.data
+        if form.first_name.data[-1] == ' ':
+            first_name = form.first_name.data[:-1]
+        else:
+            first_name = form.first_name.data
+        if form.last_name.data[-1] == ' ':
+            last_name = form.last_name.data[:-1]
+        else:
+            last_name = form.last_name.data
+        if form.period.data[-1] == " ":
+            period = form.period.data[:-1]
+        else:
+            period = form.period.data
 
         value = [first_name, last_name, period]
 

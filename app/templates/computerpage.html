@@ -11,8 +11,7 @@
             {% set link_name = i.first_name  + i.last_name %}
             <p><a href={{ "/student/%s" % link_name }}>{{ i.first_name }} {{ i.last_name }}</a> Period: {{ i.period }}</p>
         {% endfor %}
-    </div>
-    <div class="jumbotron">
+        <br>
         <form method=post>
             {{ form.hidden_tag() }}
             {{ form.status.label }}
@@ -22,6 +21,22 @@
             {{ form.os() }}
             <br>
             {{ form.submit() }}
+        </form>
+    </div>
+    <div class="jumbotron">
+        <h1>Software:</h1>
+        <form method=post>
+            {{ soft.hidden_tag() }}
+            {{ soft.anaconda.label }}
+            {{ soft.anaconda() }}
+            <br>
+            {{ soft.python.label }}
+            {{ soft.python() }}
+            <br>
+            {{ soft.atom.label }}
+            {{ soft.atom() }}
+            <br>
+            {{ soft.submit() }}
         </form>
     </div>
 {% endblock %}
