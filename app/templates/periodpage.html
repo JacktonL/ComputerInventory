@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h1>Students in Period {{ period }}</h1>
+        <br>
+        <ul>
+            {% for i in value %}
+                <a href={{ "/student/%s" % i.first_name + i.last_name }}><li>{{ i.first_name }} {{ i.last_name }}</li></a>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

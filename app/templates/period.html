@@ -3,7 +3,7 @@
 {% block body %}
     <div class="jumbotron">
         {% for i in range(1,6) %}
-            <h3>Period {{ i }}</h3>
+            <h3>Period <a href={{ "/period/%s" % i }}> {{ i }}</a></h3>
             {% for j in value %}
                 {% if j.period == i|string %}
                     {% set link_name = j.first_name + j.last_name %}
