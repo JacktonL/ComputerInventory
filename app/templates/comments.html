@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="jumbotron">
+        <form method=post>
+            {{ form.hidden_tag() }}
+            {{ form.first_name.label }}
+            {{ form.first_name() }}
+            <br>
+            {{ form.last_name.label }}
+            {{ form.last_name() }}
+            <br>
+            {{ form.comment.label }}
+            {{ form.comment() }}
+            <br>
+            {{ form.submit() }}
+        </form>
+    </div>
+    <div class="jumbotrom">
+        {% for i in objs %}
+            <h5>{{ i.first_name }} {{ i.last_name }} at {{ i.date }}</h5>
+            <p>{{ i.comment }}</p>
+        {% endfor %}
+    </div>
+{% endblock %}
