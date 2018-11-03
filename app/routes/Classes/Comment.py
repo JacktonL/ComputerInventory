@@ -6,5 +6,5 @@ class Comment(Document):
 
     first_name = StringField()
     last_name = StringField()
-    date = DateTimeField()
+    date = StringField()
     comment = StringField()

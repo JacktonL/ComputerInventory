@@ -8,6 +8,8 @@ from datetime import datetime
 @app.route("/comments", methods=["POST", "GET"])
 def comments():
 
+    date = datetime.now()
+    date_string = date.strftime("%I:%M %m/%d/%y ")
     form = CommentForm(request.form)
 
     if request.method == "POST" and form.validate():
@@ -20,7 +22,7 @@ def comments():
 
         commentObj.first_name = first
         commentObj.last_name = last
-        commentObj.date = datetime.now()
+        commentObj.date = date_string
         commentObj.comment = comment
 
         commentObj.save()
