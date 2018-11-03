@@ -10,8 +10,8 @@
             {{ form.last_name.label }}
             {{ form.last_name() }}
             <br>
-            {{ form.comment.label }}
-            {{ form.comment() }}
+            <h6>Comment</h6>
+            {{ form.comment(cols="50", rows="7") }}
             <br>
             {{ form.submit() }}
         </form>
