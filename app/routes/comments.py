@@ -9,7 +9,9 @@ from datetime import datetime
 def comments():
 
     date = datetime.now()
-    date_string = date.strftime("%I:%M %m/%d/%y ")
+    hour = date.strftime("%I")
+    sum = int(hour) + 4
+    date_string = date.strftime("{}:%M %m/%d/%y".format(str(sum)))
     form = CommentForm(request.form)
 
     if request.method == "POST" and form.validate():
