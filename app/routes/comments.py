@@ -10,7 +10,9 @@ def comments():
 
     date = datetime.now()
     hour = date.strftime("%I")
-    sum = int(hour) + 4
+    sum = int(hour) + 11
+    if sum > 12:
+        sum -= 12
     date_string = date.strftime("{}:%M %m/%d/%y".format(str(sum)))
     form = CommentForm(request.form)
 
