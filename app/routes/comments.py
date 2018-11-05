@@ -30,6 +30,5 @@ def comments():
         commentObj.comment = comment
 
         commentObj.save()
-        return render_template("comments.html", form=form, objs=list(Comment.objects)[::-1])
 
     return render_template("comments.html", form=form, objs=list(Comment.objects)[::-1])
