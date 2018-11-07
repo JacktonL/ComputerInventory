@@ -3,6 +3,8 @@
 {% block body %}
 
     <div class="jumbotron">
+        <h4>Add a Comment</h4>
+        <br>
         <form method=post>
             {{ form.hidden_tag() }}
             {{ form.first_name.label }}
@@ -18,6 +20,8 @@
         </form>
     </div>
     <div class="jumbotrom">
+        <h4>Comments:</h4>
+    <br>
         {% for i in objs %}
             <h5>{{ i.first_name }} {{ i.last_name }} at {{ i.date }}</h5>
             <p>{{ i.comment }}</p>
