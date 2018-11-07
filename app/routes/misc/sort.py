@@ -16,6 +16,7 @@ def sortstatus():
 
     return sortlist
 
+
 def sortos():
 
     valuelist = list("LWO")
