@@ -9,7 +9,7 @@
         <h3>Students Assigned to Computer {{ value.number }}</h3>
         {% for i in students %}
             {% set link_name = i.first_name  + i.last_name %}
-            <p><a href={{ "/student/%s" % link_name }}>{{ i.first_name }} {{ i.last_name }}</a> Period: {{ i.period }}</p>
+            <p><a href={{ "/student/%s" % link_name }}>{{ i.first_name }} {{ i.last_name }}</a> Period: <a href={{ "/period/{}".format(i.period) }}>{{ i.period }}</a></p>
         {% endfor %}
         <br>
         <form method=post>

@@ -3,7 +3,7 @@
 {% block body %}
     <div class="jumbotron">
         <h3>{{ student.first_name }} {{ student.last_name }}</h3>
-        <p>Period: {{ student.period }}</p>
+        <p>Period: <a href={{ "/period/{}".format(student.period) }}>{{ student.period }}</a></p>
         {% if student.computer == None %}
             <p>Computer: Not Assigned</p>
         {% else %}
