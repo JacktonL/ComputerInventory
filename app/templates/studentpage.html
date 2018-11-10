@@ -9,7 +9,6 @@
         {% else %}
             <p>Assigned to <a href={{ "/computer/%s" % student.computer.number }}>Computer: {{ student.computer.number }}</a></p>
         {% endif %}
-
     </div>
     <div class="jumbotron">
         <form method=post>
@@ -19,4 +18,5 @@
             {{ form.submit() }}
         </form>
     </div>
+
 {% endblock %}
