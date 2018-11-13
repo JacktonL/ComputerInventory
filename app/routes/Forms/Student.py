@@ -7,4 +7,5 @@ class StudentForm(FlaskForm):
     last_name = StringField('Students Last Name')
     period = SelectField('Period #', choices=[(str(x), x) for x in range(1, 7)])
     submit = SubmitField("Submit")
-    assign = SelectField("Assign to Computer: ", choices=[(str(x), x) for x in range(1, 36)])
+    assign = SelectField("Assign to Computer: ", choices=[(str(x), x) for x in range(1, 36)] + [("Personal", "Personal")])
+

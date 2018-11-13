@@ -6,7 +6,6 @@ from .Classes import Computer
 from .misc import sortperiod
 
 
-
 @app.route("/students", methods=['GET', 'POST'])
 def students():
     value = False
@@ -32,8 +31,8 @@ def students():
 
         newStudent = Student()
 
-        newStudent.first_name = first_name
-        newStudent.last_name = last_name
+        newStudent.first_name = first_name.title()
+        newStudent.last_name = last_name.title()
         newStudent.period = period
         newStudent.save()
 
@@ -54,7 +53,8 @@ def studentpage(student):
         temp = i.first_name + i.last_name
         if temp == student:
             studentObj = i
-            if request.method == 'POST' and form.validate():
+            if request.method == 'POST' and not form.validate():
+                print(True)
                 for i in Computer.objects:
                     if i.number == form.assign.data:
                         studentObj.computer = i
