@@ -12,16 +12,18 @@
             <p><a href={{ "/student/%s" % link_name }}>{{ i.first_name }} {{ i.last_name }}</a> Period: <a href={{ "/period/{}".format(i.period) }}>{{ i.period }}</a></p>
         {% endfor %}
         <br>
-        <form method=post>
-            {{ form.hidden_tag() }}
-            {{ form.status.label }}
-            {{ form.status() }}
-            <br>
-            {{ form.os.label }}
-            {{ form.os() }}
-            <br>
-            {{ form.submit() }}
-        </form>
+        {% if value.number != "Personal" %}
+            <form method=post>
+                {{ form.hidden_tag() }}
+                {{ form.status.label }}
+                {{ form.status() }}
+                <br>
+                {{ form.os.label }}
+                {{ form.os() }}
+                <br>
+                {{ form.submit() }}
+            </form>
+        {% endif %}
     </div>
     <!--
     {#
