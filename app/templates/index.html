@@ -2,5 +2,8 @@
 
 {% block body %}
     <div class="jumbotron">
+        {% if name %}
+            <p>{{ name }}</p>
+        {% endif %}
     </div>
 {% endblock %}
