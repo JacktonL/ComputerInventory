@@ -3,6 +3,26 @@
 {% block body %}
     <div class="jumbotron">
         <h5>Made by Jackton Levy</h5>
+        <br>
+        <p>Written in python, html, and css. MongoDB database supplied by mLab.</p>
         <p>The <a href="https://github.com/JacktonL/ComputerInventory">Code</a></p>
+        <br>
+        <!--
+        {#
+        <a href="#" onclick="toggle_visibility('hide');">Triggered?</a>
+        <img style="display: none" id="hide" src="{{ url_for('static', filename='Checkmate.jpg') }}">
+        #}
+        -->
     </div>
+    <!--
+    <script type="text/javascript">
+        function toggle_visibility(id) {
+           var e = document.getElementById(id);
+           if(e.style.display === 'block')
+              e.style.display = 'none';
+           else
+              e.style.display = 'block';
+        }
+    </script>
+    -->
 {% endblock %}

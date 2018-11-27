@@ -16,6 +16,7 @@ def sortstatus():
 
     return sortlist
 
+
 def sortos():
 
     valuelist = list("LWO")
@@ -55,3 +56,24 @@ def sortperiod():
                 sortlist.append(j)
 
     return sortlist
+
+
+def sortname(names):
+
+    last = []
+
+    temp = []
+
+    for i in names:
+
+        last.append(i.last_name)
+
+    for i in names:
+
+        for j in sorted(last):
+
+            if i.last_name == j:
+
+                temp.append(i)
+
+    return temp

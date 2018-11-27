@@ -1,6 +1,7 @@
 from app.routes import app
 from flask import render_template
 from .Classes import Student
+from .misc import sortname
 
 
 @app.route("/period")
@@ -20,6 +21,6 @@ def periodpage(num):
 
             student_list.append(i)
 
-            return render_template("periodpage.html", value=student_list, period=num)
+    return render_template("periodpage.html", value=sortname(student_list), period=num)
 
-    return render_template("error.html")
+
