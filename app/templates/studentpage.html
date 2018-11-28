@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="jumbotron">
-        <h3>{{ student.first_name }} {{ student.last_name }}</h3>
+        <h3>{{ student.full_name }}</h3>
         <p>Period: <a href={{ "/period/{}".format(student.period) }}>{{ student.period }}</a></p>
         {% if student.computer == None %}
             <p>Computer: Not Assigned</p>
@@ -13,8 +13,12 @@
     <div class="jumbotron">
         <form method=post>
             {{ form.hidden_tag() }}
+            {{ form.period.label }}
+            {{ form.period() }}
+            <br>
             {{ form.assign.label }}
             {{ form.assign() }}
+            <br>
             {{ form.submit() }}
         </form>
     </div>

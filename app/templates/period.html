@@ -6,8 +6,8 @@
             <h3>Period <a href={{ "/period/%s" % i }}> {{ i }}</a></h3>
             {% for j in value %}
                 {% if j.period == i|string %}
-                    {% set link_name = j.first_name + j.last_name %}
-                    <p><a href={{ "/student/%s" % link_name }}>{{ j.first_name }} {{ j.last_name }}</a> - <a href={{ "/computer/%s" % j.computer.number }}> Computer</a>: {{ j.computer.number }}</p>
+                    {% set link_name = j.full_name.replace(" ", "_") %}
+                    <p><a href={{ "/student/%s" % link_name }}>{{ j.full_name }}</a> - <a href={{ "/computer/%s" % j.computer.number }}> Computer</a>: {{ j.computer.number }}</p>
                 {% endif %}
             {% endfor %}
         {% endfor %}

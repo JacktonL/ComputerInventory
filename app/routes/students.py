@@ -1,6 +1,6 @@
 from app.routes import app
 from flask import render_template, request
-from .Forms import StudentForm, Sort
+from .Forms import Sort, StudentForm
 from .Classes import Student
 from .Classes import Computer
 from .misc import sortperiod
@@ -25,10 +25,11 @@ def studentpage(student):
     form = StudentForm(request.form)
 
     for i in Student.objects:
-        temp = i.first_name + i.last_name
+        temp = i.full_name.replace(" ", "_")
         if temp == student:
             studentObj = i
-            if request.method == 'POST' and not form.validate():
+            if request.method == 'POST' and form.validate():
+                studentObj.period = form.period.data
                 for i in Computer.objects:
                     if i.number == form.assign.data:
                         studentObj.computer = i

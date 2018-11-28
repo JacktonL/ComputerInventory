@@ -4,13 +4,14 @@ from app.routes import app
 from flask import render_template, session, redirect, request
 from requests_oauth2.services import GoogleClient
 from requests_oauth2 import OAuth2BearerToken
+from .misc import findstudent
 
 
 google_auth = GoogleClient(
     client_id=("624093337065-fqd6k7v5sqgj1l10kit6dhd6qofq8jat"
                ".apps.googleusercontent.com"),
     client_secret="9UEX16NlzET-aPgdntBy7Bfi",
-    redirect_uri="http://localhost:5000/oauth2callback"
+    redirect_uri="https://computerinv-216303.appspot.com/oauth2callback"
 )
 
 
@@ -29,6 +30,7 @@ def login():
     r.raise_for_status()
     data = r.json()
     session["displayName"] = data["displayName"]
+    findstudent(data)
     return redirect("/")
 
 
