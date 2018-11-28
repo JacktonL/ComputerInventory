@@ -16,7 +16,7 @@ google_auth = GoogleClient(
 
 @app.route('/')
 def index():
-    return render_template("index.html", name=session.get("displayName"))
+    return render_template("index.html")
 
 
 @app.route('/login')
@@ -28,7 +28,8 @@ def login():
         r = s.get("https://www.googleapis.com/plus/v1/people/me?access_token={}".format(session.get("access_token")))
     r.raise_for_status()
     data = r.json()
-    return render_template("index.html", name=data["displayName"])
+    session["displayName"] = data["displayName"]
+    return redirect("/")
 
 
 @app.route("/oauth2callback")

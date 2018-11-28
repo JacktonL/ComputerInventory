@@ -9,39 +9,14 @@ from .misc import sortperiod
 @app.route("/students", methods=['GET', 'POST'])
 def students():
     value = False
-    form = StudentForm(request.form)
     sortForm = Sort(request.form)
     studentlist = Student.objects
 
-    if request.method == 'POST' and not form.validate() and form.period.data != "":
-        if form.first_name.data[-1] == ' ':
-            first_name = form.first_name.data[:-1]
-        else:
-            first_name = form.first_name.data
-        if form.last_name.data[-1] == ' ':
-            last_name = form.last_name.data[:-1]
-        else:
-            last_name = form.last_name.data
-        if form.period.data[-1] == " ":
-            period = form.period.data[:-1]
-        else:
-            period = form.period.data
-
-        value = [first_name, last_name, period]
-
-        newStudent = Student()
-
-        newStudent.first_name = first_name.title()
-        newStudent.last_name = last_name.title()
-        newStudent.period = period
-        newStudent.save()
-
     if request.method == 'POST' and not sortForm.validate():
-        print(1)
         if sortForm.sortStudent.data == 'per':
             studentlist = sortperiod()
 
-    return render_template("students.html", form=form, value=value, students=studentlist, sort=sortForm)
+    return render_template("students.html", value=value, students=studentlist, sort=sortForm)
 
 
 @app.route("/student/<student>", methods=['GET', 'POST'])
@@ -54,7 +29,6 @@ def studentpage(student):
         if temp == student:
             studentObj = i
             if request.method == 'POST' and not form.validate():
-                print(True)
                 for i in Computer.objects:
                     if i.number == form.assign.data:
                         studentObj.computer = i

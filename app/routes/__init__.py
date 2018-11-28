@@ -4,4 +4,4 @@ from .index import *
 from .period import *
 from .computers import *
 from .comments import *
-from .about import about
+from .about import *
