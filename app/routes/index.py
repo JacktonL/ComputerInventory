@@ -12,6 +12,8 @@ google_auth = GoogleClient(
                ".apps.googleusercontent.com"),
     client_secret="9UEX16NlzET-aPgdntBy7Bfi",
     redirect_uri="https://computerinv-216303.appspot.com/oauth2callback"
+    # "http://localhost:5000/oauth2callback"
+    # "https://computerinv-216303.appspot.com/oauth2callback"
 )
 
 
@@ -56,7 +58,7 @@ def google_oauth2callback():
 
 @app.route("/logout")
 def logout():
-
+    session.pop("access_token")
     session.pop("displayName")
 
     return redirect("/")
