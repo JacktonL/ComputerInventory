@@ -3,6 +3,7 @@ from flask import request, render_template
 from .Classes import Comment
 from .Forms import CommentForm
 from datetime import datetime
+from flask import session, flash
 
 
 @app.route("/comments", methods=["POST", "GET"])
@@ -18,17 +19,21 @@ def comments():
 
     if request.method == "POST" and form.validate():
 
-        first = form.first_name.data
-        last = form.last_name.data
-        comment = form.comment.data
+        if session.get("displayName"):
 
-        commentObj = Comment()
+            name = session.get("displayName")
+            comment = form.comment.data
 
-        commentObj.first_name = first
-        commentObj.last_name = last
-        commentObj.date = date_string
-        commentObj.comment = comment
+            commentObj = Comment()
 
-        commentObj.save()
+            commentObj.full_name = name
+            commentObj.date = date_string
+            commentObj.comment = comment
+
+            commentObj.save()
+
+        else:
+
+            flash("Login to Comment")
 
     return render_template("comments.html", form=form, objs=list(Comment.objects)[::-1])

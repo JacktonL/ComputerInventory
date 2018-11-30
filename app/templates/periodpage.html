@@ -6,7 +6,7 @@
         <br>
         <ul>
             {% for i in value %}
-                <a href={{ "/student/%s" % i.first_name + i.last_name }}><li>{{ i.first_name }} {{ i.last_name }}</li></a>
+                <a href={{ "/student/%s" % i.full_name.replace(" ", "_") }}><li>{{ i.full_name }}</li></a>
             {% endfor %}
         </ul>
     </div>

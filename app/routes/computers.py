@@ -67,10 +67,11 @@ def computerpage(computer):
             for j in Student.objects:
                 temp = computerObj.number
                 try:
-                    if j.computer.number == temp:
+                    if j.computer.number == str(temp):
                         studentlist.append(j)
                 except AttributeError:
                     pass
+
             if request.method == "POST" and form.validate():
                 computerObj.os = form.os.data
                 computerObj.status = form.status.data
@@ -82,7 +83,6 @@ def computerpage(computer):
                 new_software = Software()
 
                 new_software.anaconda = softform.anaconda.data
-                print(softform.anaconda.data)
                 new_software.python = softform.python.data
                 new_software.atom = softform.atom.data
 
@@ -93,7 +93,7 @@ def computerpage(computer):
                 computerObj.save()
 
             return render_template("computerpage.html", value=computerObj, form=form, students=studentlist,
-                                    soft=softform)
+                                   soft=softform)
 
     return render_template("error.html")
 

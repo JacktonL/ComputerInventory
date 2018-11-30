@@ -7,23 +7,25 @@
         <br>
         <form method=post>
             {{ form.hidden_tag() }}
-            {{ form.first_name.label }}
-            {{ form.first_name() }}
-            <br>
-            {{ form.last_name.label }}
-            {{ form.last_name() }}
-            <br>
             <h6>Comment</h6>
             {{ form.comment(cols="50", rows="7") }}
             <br>
             {{ form.submit() }}
         </form>
+        <br>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
     </div>
     <div class="jumbotron">
         <h4>Comments:</h4>
     <br>
         {% for i in objs %}
-            <h5>{{ i.first_name }} {{ i.last_name }} at {{ i.date }}</h5>
+            <h5>{{ i.full_name }} at {{ i.date }}</h5>
             <p>{{ i.comment }}</p>
         {% endfor %}
     </div>

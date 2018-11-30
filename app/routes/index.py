@@ -11,7 +11,7 @@ google_auth = GoogleClient(
     client_id=("624093337065-fqd6k7v5sqgj1l10kit6dhd6qofq8jat"
                ".apps.googleusercontent.com"),
     client_secret="9UEX16NlzET-aPgdntBy7Bfi",
-    redirect_uri="https://computerinv-216303.appspot.com/oauth2callback"
+    redirect_uri="http://localhost:5000/oauth2callback"
 )
 
 
@@ -30,6 +30,7 @@ def login():
     r.raise_for_status()
     data = r.json()
     session["displayName"] = data["displayName"]
+    session["routeName"] = data["displayName"].replace(" ", "_")
     findstudent(data)
     return redirect("/")
 
@@ -51,3 +52,11 @@ def google_oauth2callback():
     )
     session["access_token"] = data.get("access_token")
     return redirect("/login")
+
+
+@app.route("/logout")
+def logout():
+
+    session.pop("displayName")
+
+    return redirect("/")

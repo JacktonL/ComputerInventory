@@ -8,8 +8,8 @@
         <br>
         <h3>Students Assigned to Computer {{ value.number }}</h3>
         {% for i in students %}
-            {% set link_name = i.first_name  + i.last_name %}
-            <p><a href={{ "/student/%s" % link_name }}>{{ i.first_name }} {{ i.last_name }}</a> Period: <a href={{ "/period/{}".format(i.period) }}>{{ i.period }}</a></p>
+            {% set link_name = i.full_name.replace(" ", "_") %}
+            <p><a href={{ "/student/%s" % link_name }}>{{ i.full_name }}</a> Period: <a href={{ "/period/{}".format(i.period) }}>{{ i.period }}</a></p>
         {% endfor %}
         <br>
         {% if value.number != "Personal" %}
