@@ -10,17 +10,18 @@
             <p>Assigned to <a href={{ "/computer/%s" % student.computer.number }}>Computer: {{ student.computer.number }}</a></p>
         {% endif %}
     </div>
-    <div class="jumbotron">
-        <form method=post>
-            {{ form.hidden_tag() }}
-            {{ form.period.label }}
-            {{ form.period() }}
-            <br>
-            {{ form.assign.label }}
-            {{ form.assign() }}
-            <br>
-            {{ form.submit() }}
-        </form>
-    </div>
-
+    {% if session["displayName"] == student.full_name %}
+        <div class="jumbotron">
+            <form method=post>
+                {{ form.hidden_tag() }}
+                {{ form.period.label }}
+                {{ form.period() }}
+                <br>
+                {{ form.assign.label }}
+                {{ form.assign() }}
+                <br>
+                {{ form.submit() }}
+            </form>
+        </div>
+    {% endif %}
 {% endblock %}

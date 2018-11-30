@@ -37,9 +37,11 @@ def sortnumber():
 
     for i in range(1, 33):
         for j in Computer.objects:
-
-            if int(j.number) == i:
-                sortlist.append(j)
+            try:
+                if int(j.number) == i:
+                    sortlist.append(j)
+            except ValueError:
+                pass
 
     return sortlist
 
