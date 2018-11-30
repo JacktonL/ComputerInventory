@@ -6,7 +6,6 @@ from app.routes.Classes import Student
 def sortstatus():
 
     valuelist = list("WN")
-
     sortlist = []
 
     for i in valuelist:
@@ -20,7 +19,6 @@ def sortstatus():
 def sortos():
 
     valuelist = list("LWO")
-
     sortlist = []
 
     for i in valuelist:
@@ -63,19 +61,14 @@ def sortperiod():
 def sortname(names):
 
     last = []
-
     temp = []
 
     for i in names:
-
         last.append(i.last_name)
 
     for i in names:
-
         for j in sorted(last):
-
             if i.last_name == j:
-
                 temp.append(i)
 
     return temp
